@@ -9,15 +9,15 @@ http.createServer(function(req,res) {
     if (err){
       return err;
     }
+
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
     'November', 'December'];
 
     if (q.search) {
       var parsed = queryString.parse(q.search);
-      res.writeHead(200, {'Content-type': 'text/html'});
+      res.writeHead(200, {'Content-type': 'text/html', 'charset': 'UTF-8', });
 
       if (Number.isInteger(+parsed.request)) {
-
         var newDate = new Date(+parsed.request * 1000);
         res.write("Natural Time: " + (months[newDate.getMonth()] + " " + newDate.getDate() + ", " + (newDate.getYear() + 1900).toString()) + "<br>");
         var unixTime = (newDate.getTime()/1000).toString();
@@ -45,14 +45,8 @@ http.createServer(function(req,res) {
         else {
           res.end("Invalid Date");
         }
-
       }
-
-
-
-
     }
-
     else {
       res.writeHead(200, {'Content-type': 'text/html'});
       res.write(data);
