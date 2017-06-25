@@ -4,9 +4,6 @@
 <head>
   <meta charset="UTF-8" />
   <title>Timestamp Microservice</title>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.13.0/polyfill.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fetch/1.0.0/fetch.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <style>
 
   </style>
@@ -14,34 +11,11 @@
 
 <body>
 <form>
-  Enter Time:
-  <input type="text" name="request"></input>
-  <button type="submit" onsubmit="submitTime()" name="submit">Submit</button>
+  Enter Time (Unix or Month Day,Year):
+  <input type="text" name="request" required>
+  <input type="submit" onsubmit="submitTime()">
   <h1 id="result"></h1>
 </form>
-
-  <script >
-    document.getElementById("result").innerHTML = "test";
-
-    $.ajax({
-       url: "/", dataType:"json", success:function(result) {
-        console.log("success");
-       }
-
-     });
-
-  function submitTime() {
-    console.log("request");
-    document.getElementById("result").innerHTML = "test";
-    fetch("/", function(response) {
-      response.json(function(data) {
-        console.log("tester");
-      });
-    }).catch(function(err) {
-      console.log(err);
-    });
-  }
-  </script>
 
 </body>
 
